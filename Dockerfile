@@ -7,8 +7,8 @@ RUN   mkdir /crontab-ui; touch $CRON_PATH/root; chmod +x $CRON_PATH/root
 
 WORKDIR /crontab-ui
 
-LABEL maintainer "@alseambusher"
-LABEL description "Crontab-UI docker"
+LABEL maintainer "Jose Macchi - Geotekne"
+LABEL description "Extended Crontab-UI docker"
 
 RUN   apk --no-cache add \
       wget \
@@ -16,7 +16,9 @@ RUN   apk --no-cache add \
       nodejs \
       npm \
       supervisor \
-      tzdata
+      tzdata \
+      openssh-client \
+      sshpass
 
 COPY supervisord.conf /etc/supervisord.conf
 COPY . /crontab-ui
